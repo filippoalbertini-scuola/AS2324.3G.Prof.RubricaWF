@@ -184,6 +184,7 @@
             btnAggiungi.TabIndex = 4;
             btnAggiungi.Text = "Aggiungi";
             btnAggiungi.UseVisualStyleBackColor = true;
+            btnAggiungi.Click += btnAggiungi_Click;
             // 
             // lblNRecord
             // 

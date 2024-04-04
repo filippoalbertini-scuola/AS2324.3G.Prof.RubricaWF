@@ -13,6 +13,7 @@ namespace AS2324._3G.Prof.RubricaWF
         string[] nickname = new string[nMaxContatti];
         int[] simpatia = new int[nMaxContatti];
         int[] annoNascita = new int[nMaxContatti];
+
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +23,18 @@ namespace AS2324._3G.Prof.RubricaWF
         {
             if (cmbRicerca.Text == "")
                 MessageBox.Show("E' necessario definire il campo di ricerca.");
+        }
+
+        private void btnAggiungi_Click(object sender, EventArgs e)
+        {
+            cognome[nRecordInseriti] = txtCognome.Text;
+            nome[nRecordInseriti] = txtNome.Text;
+            email[nRecordInseriti] = txtEmail.Text;
+            nickname[nRecordInseriti] = txtNickName.Text;
+            simpatia[nRecordInseriti] = Convert.ToInt32(cmbSimpatia.Text);
+            annoNascita[nRecordInseriti] = Convert.ToInt32(txtAnnoNascita.Text);
+
+            nRecordInseriti++;
         }
     }
 }
