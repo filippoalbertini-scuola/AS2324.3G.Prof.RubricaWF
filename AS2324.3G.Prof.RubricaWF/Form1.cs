@@ -27,14 +27,39 @@ namespace AS2324._3G.Prof.RubricaWF
 
         private void btnAggiungi_Click(object sender, EventArgs e)
         {
+            if (txtCognome.Text.Length == 0 ||
+                txtNome.Text.Length == 0 ||
+                txtNickName.Text.Length == 0)
+            {
+                MessageBox.Show("Dati obbligatori non inseriti non è possibile aggiungere il record");
+                return;
+            }
+                
+
             cognome[nRecordInseriti] = txtCognome.Text;
             nome[nRecordInseriti] = txtNome.Text;
             email[nRecordInseriti] = txtEmail.Text;
             nickname[nRecordInseriti] = txtNickName.Text;
-            simpatia[nRecordInseriti] = Convert.ToInt32(cmbSimpatia.Text);
-            annoNascita[nRecordInseriti] = Convert.ToInt32(txtAnnoNascita.Text);
+
+            if (cmbSimpatia.Text.Length>0)
+                simpatia[nRecordInseriti] = Convert.ToInt32(cmbSimpatia.Text);
+            if (txtAnnoNascita.Text.Length>0)
+                annoNascita[nRecordInseriti] = Convert.ToInt32(txtAnnoNascita.Text);
 
             nRecordInseriti++;
+
+        }
+
+        private void btnElenca_Click(object sender, EventArgs e)
+        {
+            lstElenco.Items.Clear();
+            lstElenco.Items.Add("Elenco dei nominativi inseriti");
+
+            lstElenco.Items.Add("cognome              nome                 email                nickname  simpatia annoNascita");
+            for (int i = 0; i < nRecordInseriti; i++)
+            {
+               lstElenco.Items.Add($"{cognome[i].PadRight(20).Substring(0, 20)} {nome[i].PadRight(20).Substring(0, 20)} {email[i]?.PadRight(20)} {nickname[i].PadRight(10).Substring(0, 10)} {simpatia[i]}       {annoNascita[i]}");
+            }
         }
     }
 }
